@@ -112,14 +112,16 @@ if __name__ == '__main__':
     ph = st.number_input("Enter the pH value")
     ec = st.number_input("Enter the current EC value the plant")
 
-    if crop == "chilli":
-        recommend_chilli(tds, temp, humidity, ph, ec, phase)
-    elif crop == "rice":
-        recommend_rice(tds, temp, humidity, ph, ec, phase)
-
+    if (tds==0 and temp==0) or (humidity==0 or ph==0 or ec ==0 ):
+        st.write("Please fill all the values")
     else:
-        if crop == "select":
-            st.write("Please select crop.")
-        else:
-            st.write("We are sorry. Data is unavailable for the plant you have entered.")
+        if crop == "chilli":
+            recommend_chilli(tds, temp, humidity, ph, ec, phase)
+        elif crop == "rice":
+            recommend_rice(tds, temp, humidity, ph, ec, phase)
 
+        else:
+            if crop == "select":
+                st.write("Please select crop.")
+            else:
+                st.write("We are sorry. Data is unavailable for the plant you have entered.")
