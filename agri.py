@@ -18,9 +18,8 @@ def recommend_chilli(tds, temp, humidity, ph, ec, phase):
         st.write("")
         if tds < optimum_tds['min']:
             st.write(f"Add more fertilizer to increase TDS to at least {optimum_tds['min']} ppm.")
-            st.write(f"Fertigation schedule for CHILLI")
-            st.write(f"Recommended Dose of N, P, K is: 120:80:80 kg / ha")
-            
+            st.write(f"Fertigation schedule for CHILLI :")
+            st.markdown(" <i> Recommended Dose of N, P, K is: 120:80:80 kg / ha </i>", unsafe_allow_html=True)
         elif tds > optimum_tds['max']:
             st.write(f"Reduce fertilizer to decrease TDS to at most {optimum_tds['max']} ppm.")
         if temp < optimum_temperature['min']:
@@ -69,7 +68,7 @@ def recommend_rice(tds, temp, humidity, ph, ec, phase):
         if tds < optimum_tds['min']:
             st.write(f"Add more fertilizer to increase TDS to at least {optimum_tds['min']} ppm.")
             st.write("Fertigation schedule for rice")
-            st.markdown(" <i> Recommended Dose of N, P, K is: 120:80:80 kg / ha </i>", unsafe_allow_html=True)
+            st.markdown(" <i> Recommended Dose of N, P, K is: 60:30:30 kg / ha </i>", unsafe_allow_html=True)
         elif tds > optimum_tds['max']:
             st.write(f"Reduce fertilizer to decrease TDS to at most {optimum_tds['max']} ppm.")
         if humidity < optimum_humidity['min']:
