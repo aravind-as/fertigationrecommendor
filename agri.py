@@ -50,6 +50,7 @@ def recommend_chilli(tds, temp, humidity, ph, ec, phase):
 
 
 def recommend_rice(tds, humidity, ph, ec, temp, phase):
+    
     optimum_ec = {'min': 0.65, 'max': 12.50}
     optimum_tds = {'min': 450, 'max': 2000}
     optimum_humidity = {'min': 60, 'max': 80}
@@ -61,7 +62,8 @@ def recommend_rice(tds, humidity, ph, ec, temp, phase):
     if phase.lower() == "middle" and 450 <= tds <= 2000 and 60 <= humidity <= 80 and 5.5 <= ph <= 6.5 and 0.65 <= ec <= 12.50 and temp == 10:
         st.write("Change in Fertigation is not required")
     if phase.lower() == "generative" and 450 <= tds <= 2000 and 60 <= humidity <= 80 and 5.5 <= ph <= 6.5 and 0.65 <= ec <= 12.50 and 20 <= temp <= 21:
-        st.write("Change in Fertigation is not required"
+        st.write("Change in Fertigation is not required")
+    
     else:
         st.write("")
         if tds < optimum_tds['min']:
@@ -83,6 +85,7 @@ def recommend_rice(tds, humidity, ph, ec, temp, phase):
         elif ec > optimum_ec['max']:
             st.write(f"Decrease ec level to at most {optimum_ec['max']} .")
 
+
         if phase.lower() == "initial" and temp < optimum_temp['initial']['min']:
             st.write(f"Increase temp level to at least {optimum_temp['initial']['min']}.")
         elif phase.lower() == "initial" and temp > optimum_temp['initial']['max']:
@@ -101,6 +104,8 @@ if __name__ == '__main__':
     st.set_page_config(page_title='Fertigation Recommender')
     st.title('Fertigation Recommender')
     crop = st.selectbox("Select the crop name", ["select", "chilli", "rice"])
+
+    
     num_days = st.selectbox("Select the number of days after planting:",["select", "1 to 20 days", "21 to 75 days", "76 to 120 days"])
     
     if num_days == "1 to 20 days":
@@ -132,8 +137,10 @@ if __name__ == '__main__':
             recommend_chilli(tds, temp, humidity, ph, ec, phase)
         elif crop == "rice":
             recommend_rice(tds, temp, humidity, ph, ec, phase)
+
         else:
             if crop == "select":
                 st.write("Please select crop.")
             else:
                 st.write("We are sorry. Data is unavailable for the plant you have entered.")
+
