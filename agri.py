@@ -49,7 +49,7 @@ def recommend_chilli(tds, temp, humidity, ph, ec, phase):
             st.write(f"Decrese EC level to {optimum_ec['generative']} by reducing fertilizers")
 
 
-def recommend_rice(tds, humidity, ph, ec, temp, phase):
+def recommend_rice(tds, temp, humidity, ph, ec, phase):
     
     optimum_ec = {'min': 0.65, 'max': 12.50}
     optimum_tds = {'min': 450, 'max': 2000}
@@ -81,23 +81,23 @@ def recommend_rice(tds, humidity, ph, ec, temp, phase):
         elif ph > optimum_ph['max']:
             st.write(f"Adjust pH to at most {optimum_ph['max']} using sulfur or acidifying fertilizers.")
         if ec < optimum_ec['min']:
-            st.write(f"Increase ec level to at least {optimum_ec['min']}.")
+            st.write(f"Increase EC level to at least {optimum_ec['min']}.")
         elif ec > optimum_ec['max']:
-            st.write(f"Decrease ec level to at most {optimum_ec['max']} .")
+            st.write(f"Decrease EC level to at most {optimum_ec['max']} .")
 
 
         if phase.lower() == "initial" and temp < optimum_temp['initial']['min']:
-            st.write(f"Increase temp level to at least {optimum_temp['initial']['min']}.")
+            st.write(f"Increase temperature level to at least {optimum_temp['initial']['min']}.")
         elif phase.lower() == "initial" and temp > optimum_temp['initial']['max']:
-            st.write(f"Decrease temp level to at most {optimum_temp['initial']['max']} by reducing fertilizers.")
+            st.write(f"Decrease temperature level to at most {optimum_temp['initial']['max']} by reducing fertilizers.")
         if phase.lower() == "middle" and temp < optimum_temp['middle']:
-            st.write(f"Increase temp level to at least {optimum_temp['middle']}.")
+            st.write(f"Increase temperature level to at least {optimum_temp['middle']}.")
         elif phase.lower() == "middle" and temp > optimum_temp['middle']:
-            st.write(f"Decrease temp level to at most {optimum_temp['middle']} .")
+            st.write(f"Decrease temperature level to at most {optimum_temp['middle']} .")
         if phase.lower() == "generative" and temp < optimum_temp['generative']['min']:
-            st.write(f"Increase temp level to at least {optimum_temp['generative']['min']}.")
+            st.write(f"Increase temperature level to at least {optimum_temp['generative']['min']}.")
         elif phase.lower() == "generative" and temp > optimum_temp['generative']['max']:
-            st.write(f"Decrease temp level to at most {optimum_temp['generative']['max']} .")
+            st.write(f"Decrease temperature level to at most {optimum_temp['generative']['max']} .")
                         
 
 if __name__ == '__main__':
